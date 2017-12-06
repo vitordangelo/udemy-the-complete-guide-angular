@@ -1,3 +1,4 @@
+import { AuthService } from 'app/auth/auth.service';
 import { DataStorageService } from 'app/shared/data-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { Response } from '@angular/http';
@@ -9,7 +10,7 @@ import { Response } from '@angular/http';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor(private dataStorageService: DataStorageService, private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -25,6 +26,11 @@ export class HeaderComponent implements OnInit {
 
   onFetchDate() {
     this.dataStorageService.getRecipes();
+  }
+
+
+  onLogout() {
+    this.authService.logout();
   }
 
 
